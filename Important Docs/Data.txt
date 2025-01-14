@@ -1,5 +1,26 @@
-File Structure
-
-Backend 
-
-Frontend
+REkTOR X Impact/
+├── Controllers/
+│   ├── DonationsController.cs
+│   ├── UsersController.cs
+│   ├── OrganizationsController.cs
+│   └── AdminController.cs
+├── Models/
+│   ├── Donation.cs
+│   ├── User.cs
+│   ├── Organization.cs
+│   └── Admin.cs
+├── Services/
+│   ├── DonationService.cs
+│   ├── UserService.cs
+│   ├── OrganizationService.cs
+│   └── AdminService.cs
+├── Data/
+│   └── ApplicationDbContext.cs
+├── DTOs/
+│   ├── DonationDTO.cs
+│   ├── UserDTO.cs
+│   ├── OrganizationDTO.cs
+│   └── AdminDTO.cs
+├── Mappings/
+│   └── AutoMapperProfile.cs
+└── Program.cs
