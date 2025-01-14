@@ -1,26 +1,194 @@
-REkTOR X Impact/
-├── Controllers/
-│   ├── DonationsController.cs
-│   ├── UsersController.cs
-│   ├── OrganizationsController.cs
-│   └── AdminController.cs
-├── Models/
-│   ├── Donation.cs
-│   ├── User.cs
-│   ├── Organization.cs
-│   └── Admin.cs
-├── Services/
-│   ├── DonationService.cs
-│   ├── UserService.cs
-│   ├── OrganizationService.cs
-│   └── AdminService.cs
-├── Data/
-│   └── ApplicationDbContext.cs
-├── DTOs/
-│   ├── DonationDTO.cs
-│   ├── UserDTO.cs
-│   ├── OrganizationDTO.cs
-│   └── AdminDTO.cs
-├── Mappings/
-│   └── AutoMapperProfile.cs
-└── Program.cs
+/REkTOR-X-Impact
+│
+├── /backend
+│   ├── /Controllers
+│   │   ├── AdminController.cs
+│   │   ├── DonationOfferController.cs
+│   │   ├── DonationRequestController.cs
+│   │   ├── OrganizationController.cs
+│   │   └── UserController.cs
+│   │
+│   ├── /Models
+│   │   ├── Admin.cs
+│   │   ├── DonationOffer.cs
+│   │   ├── DonationRequest.cs
+│   │   ├── Organization.cs
+│   │   └── User.cs
+│   │
+│   ├── /Services
+│   │   ├── AdminService.cs
+│   │   ├── DonationOfferService.cs
+│   │   ├── DonationRequestService.cs
+│   │   ├── OrganizationService.cs
+│   │   └── UserService.cs
+│   │
+│   ├── /Data
+│   │   ├── ApplicationDbContext.cs
+│   │   └── SeedData.cs
+│   │
+│   ├── /Migrations
+│   │   └── (Migration files)
+│   │
+│   ├── /Repositories
+│   │   ├── IAdminRepository.cs
+│   │   ├── IDonationOfferRepository.cs
+│   │   ├── IDonationRequestRepository.cs
+│   │   ├── IOrganizationRepository.cs
+│   │   └── IUserRepository.cs
+│   │
+│   ├── /DTOs
+│   │   ├── AdminDTO.cs
+│   │   ├── DonationOfferDTO.cs
+│   │   ├── DonationRequestDTO.cs
+│   │   ├── OrganizationDTO.cs
+│   │   └── UserDTO.cs
+│   │
+│   ├── Program.cs
+│   ├── Startup.cs
+│   └── appsettings.json
+│
+└── /frontend
+    ├── /src
+    │   ├── /app
+    │   │   ├── /admin
+    │   │   │   ├── admin.component.ts
+    │   │   │   ├── admin.component.html
+    │   │   │   ├── admin.component.css
+    │   │   │   └── admin.service.ts
+    │   │   │
+    │   │   ├── /organization
+    │   │   │   ├── organization.component.ts
+    │   │   │   ├── organization.component.html
+    │   │   │   ├── organization.component.css
+    │   │   │   └── organization.service.ts
+    │   │   │
+    │   │   ├── /user
+    │   │   │   ├── user.component.ts
+    │   │   │   ├── user.component.html
+    │   │   │   ├── user.component.css
+    │   │   │   └── user.service.ts
+    │   │   │
+    │   │   ├── /donation-offer
+    │   │   │   ├── donation-offer.component.ts
+    │   │   │   ├── donation-offer.component.html
+    │   │   │   ├── donation-offer.component.css
+    │   │   │   └── donation-offer.service.ts
+    │   │   │
+    │   │   ├── /donation-request
+    │   │   │   ├── donation-request.component.ts
+    │   │   │   ├── donation-request.component.html
+    │   │   │   ├── donation-request.component.css
+    │   │   │   └── donation-request.service.ts
+    │   │   │
+    │   │   ├── /shared
+    │   │   │   ├── header.component.ts
+    │   │   │   ├── header.component.html
+    │   │   │   ├── header.component.css
+    │   │   │   ├── footer.component.ts
+    │   │   │   ├── footer.component.html
+    │   │   │   ├── footer.component.css
+    │   │   │   └── (other shared components)
+    │   │   │
+    │   │   ├── app-routing.module.ts
+    │   │   ├── app.component.ts
+    │   │   ├── app.component.html
+    │   │   ├── app.component.css
+    │   │   └── app.module.ts
+    │   │
+    │   ├── /assets
+    │   │   └── (static assets like images, styles, etc.)
+    │   │
+    │   ├── /environments
+    │   │   ├── environment.ts
+    │   │   └── environment.prod.ts
+    │   │
+    │   ├── index.html
+    │   ├── main.ts
+    │   ├── polyfills.ts
+    │   ├── styles.css
+    │   └── angular.json
+    │
+    ├── package.json
+    ├── tsconfig.json
+    └── tslint.json
+
+
+Models
+User: Represents the users of the application.
+
+Properties: UserId, Name, Email, Password, Role (Admin, Organization, User), etc.
+Organization: Represents the organizations.
+
+Properties: OrganizationId, Name, Description, ContactInfo, IsVerified, etc.
+DonationRequest: Represents the donation requests made by organizations.
+
+Properties: RequestId, OrganizationId, RequestType (Clothes, Food, Funds, etc.), Description, Status, etc.
+DonationOffer: Represents the donation offers made by users.
+
+Properties: OfferId, UserId, OfferType (Clothes, Food, Funds, etc.), Description, Status, etc.
+Controllers
+UserController: Handles user-related operations.
+
+Actions: Register, Login, GetUserDetails, UpdateProfile, etc.
+OrganizationController: Handles organization-related operations.
+
+Actions: RegisterOrganization, GetOrganizationDetails, UpdateOrganization, VerifyOrganization, etc.
+DonationRequestController: Handles donation requests from organizations.
+
+Actions: CreateRequest, GetRequests, UpdateRequest, DeleteRequest, etc.
+DonationOfferController: Handles donation offers from users.
+
+Actions: CreateOffer, GetOffers, UpdateOffer, DeleteOffer, etc.
+AdminController: Handles admin-specific operations.
+
+Actions: GetAllUsers, GetAllOrganizations, ApproveOrganization, GetStats, etc.
+Services
+UserService: Contains business logic related to users.
+
+Methods: RegisterUser, AuthenticateUser, GetUserById, UpdateUser, etc.
+OrganizationService: Contains business logic related to organizations.
+
+Methods: RegisterOrganization, VerifyOrganization, GetOrganizationById, UpdateOrganization, etc.
+DonationRequestService: Contains business logic related to donation requests.
+
+Methods: CreateRequest, GetRequests, UpdateRequest, DeleteRequest, etc.
+DonationOfferService: Contains business logic related to donation offers.
+
+Methods: CreateOffer, GetOffers, UpdateOffer, DeleteOffer, etc.
+AdminService: Contains business logic related to admin operations.
+
+Methods: GetAllUsers, GetAllOrganizations, ApproveOrganization, GetStats, etc.
+Steps to Implement
+Set Up Your Development Environment:
+
+Install .NET SDK and Angular CLI.
+Create a new .NET Core project for the backend.
+Create a new Angular project for the frontend.
+Define Models:
+
+Create model classes in your .NET project.
+Create Controllers:
+
+Implement controllers to handle HTTP requests.
+Implement Services:
+
+Create service classes to handle business logic.
+Set Up Authentication and Authorization:
+
+Use ASP.NET Identity for user authentication and role-based authorization.
+Develop the Angular Frontend:
+
+Create components, services, and routes in Angular to interact with the backend.
+Integrate Frontend and Backend:
+
+Use HTTPClient in Angular to make API calls to the .NET backend.
+Testing and Debugging:
+
+Write unit tests for both backend and frontend.
+Debug and ensure the application works as expected.
+Deployment:
+
+Deploy your application to a web server or cloud service.
+This should give you a solid foundation to start building your donation website. If you need more detailed guidance on any specific part, feel free to ask!
+
+
